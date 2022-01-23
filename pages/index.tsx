@@ -22,12 +22,16 @@ const Home: NextPage = () => {
         <div className="border rounded p-8 flex justify-between items-center max-w-2xl">
           <div className='w-64 h-64 flex flex-col'>
             <img className='w-full' src={firstPokemon.data?.sprites.front_default} alt="" />
-            <div className='text-center capitalize mt-[-2rem]'>{firstPokemon.data?.name}</div>
+            <div className='text-center capitalize mt-[-2rem]'>
+              {firstPokemon.data?.name}
+            </div>
           </div>
           <div className='p-8'>VS</div>
           <div className='w-64 h-64 flex flex-col'>
             <img className='w-full' src={secondPokemon.data?.sprites.front_default} alt="" />
-            <div className='text-center capitalize mt-[-2rem]'>{secondPokemon.data?.name}</div>
+            <div className='text-center capitalize mt-[-2rem]'>
+              {secondPokemon.data?.name}
+            </div>
           </div>
           <div className='p-2' />
         </div>
