@@ -10,10 +10,13 @@ const Home: NextPage = () => {
   const [first, second] = ids
   const firstPokemon = trpc.useQuery(["get-pokemon-by-id", {id: first}])
   const secondPokemon = trpc.useQuery(["get-pokemon-by-id", {id: second}])
-
+  const btn =`max-w-xs bg-red-800 rounded-full flex items-center justify-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white`
   if(firstPokemon.isLoading || secondPokemon.isLoading) return null;
 
-  console.log(firstPokemon.data);
+  const voteForRoundest = (select: number) => {
+    // todo: fire mutation to persist changes
+    updateIds(getOptionsForVote());
+  }
 
   return (
     <div className="h-screen w-screen flex flex-col justify-center align-center-middle">
@@ -25,6 +28,12 @@ const Home: NextPage = () => {
             <div className='text-center capitalize mt-[-2rem]'>
               {firstPokemon.data?.name}
             </div>
+            <button
+              type="button"
+              className={btn}
+              onClick={() => voteForRoundest(first)}>
+                Roudner
+            </button>
           </div>
           <div className='p-8'>VS</div>
           <div className='w-64 h-64 flex flex-col'>
@@ -32,6 +41,12 @@ const Home: NextPage = () => {
             <div className='text-center capitalize mt-[-2rem]'>
               {secondPokemon.data?.name}
             </div>
+            <button
+              type="button"
+              className={btn}
+              onClick={() => voteForRoundest(first)}>
+                Roudner
+            </button>
           </div>
           <div className='p-2' />
         </div>
