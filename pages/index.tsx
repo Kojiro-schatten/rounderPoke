@@ -11,7 +11,6 @@ const Home: NextPage = () => {
   const firstPokemon = trpc.useQuery(["get-pokemon-by-id", {id: first}])
   const secondPokemon = trpc.useQuery(["get-pokemon-by-id", {id: second}])
   const btn =`max-w-xs bg-red-800 rounded-full flex items-center justify-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white`
-  if(firstPokemon.isLoading || secondPokemon.isLoading) return null;
 
   const voteForRoundest = (select: number) => {
     // todo: fire mutation to persist changes
